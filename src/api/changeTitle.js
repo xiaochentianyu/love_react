@@ -1,0 +1,1 @@
+export default title => document.getElementsByTagName('title')[0].text = title;
