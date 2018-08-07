@@ -1,20 +1,5 @@
 let hostimg = '/static/img/'
 
-export const init = [4, 6, 7, 7, 7, 7, 7, 6, 4];
-
-export const list = ()=>{
-    let arr = [];
-    let arr2 = [];
-    for (let i = 0; i < 9; i++) {
-        arr2 = [];
-        for (let j = 0; j < init[i]; j++) {
-            arr2.push({ t: `t${i + 1}${j + 1}`, i: `iali${i + 1}${j + 1}.jpg` })
-        }
-        arr.push(arr2)
-    }
-    return arr;
-}
-
 export const pageFoot = {
     start: `按键盘 "↓" 倾听我的爱情告白`,
     end: `-- 按“Esc"键有惊喜`

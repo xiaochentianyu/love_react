@@ -5,7 +5,7 @@ import './style.css'
 
 import { dwz } from '../../api'
 import { dataList, targetY, targetX, info, pageFoot  } from '../../data/index.js'
-// import text from '../../data/text.js'
+
 import retext from '../../data/retext.js'
 import changeTitle from '../../api/changeTitle.js'
 import Edi from './isEdi';
@@ -29,7 +29,7 @@ class App extends Component {
       _x:0,
       _y:0,
     },
-    music: '/static/music/saveme.mp3',
+    music: './static/music/lovebgm.mp3',
     text:text,
     finish:{},
     dataList:dataList.slice(0),
@@ -117,7 +117,7 @@ class App extends Component {
       let girl = prompt('请输入girl')
       if (boy && girl) {
         let { origin, pathname } = window.location;
-        window.location.href = origin + pathname + '?boy=' + btoa(boy) + '&girl=' + btoa(girl);
+        window.location.href = origin + pathname + '#/reset' + '?boy=' + encodeURI(encodeURI(boy)) + '&girl=' + encodeURI(encodeURI(girl));
       }
     }
     
@@ -126,8 +126,8 @@ class App extends Component {
     }else{
       let obj = qs.parse(str);
       if( obj.boy && obj.girl ){
-        let boy = atob( obj.boy ),
-        girl = atob( obj.girl );
+        let boy = decodeURI(decodeURI( obj.boy )),
+          girl = decodeURI(decodeURI( obj.girl ));
         let text = retext( boy, girl )
         this.setState({ text })
       }else{
